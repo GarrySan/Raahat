@@ -30,3 +30,11 @@
     transform: rotate(360deg);
   }
 }
+
+#simple-dialog-title{
+  font-size: 15px;
+}
+
+.optionsDiv{
+  border-top: solid 1px #ccc;
+}
