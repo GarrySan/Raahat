@@ -1,0 +1,71 @@
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+
+/*Foodwater options:
+Option1 :
+Option2 : 
+*/
+var VictimSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    phoneNo: {
+        type: String,
+        unique: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    foodWater: {
+        type: Number,
+        required: true
+    },
+    calamity: {
+        type: String,
+        required: true  
+    },
+    withYou: {
+        type: Number,
+        required: true,
+        default: 1
+    }
+})
+
+var RescueSchema = new Schema({
+    organization: {
+        type: String
+    },
+    location: {
+        type: String,
+        required: true
+    }
+})
+
+var HelperSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    phoneNo: {
+        type: String,
+        unique: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    volunteer: {
+        type: Boolean,
+        default: false
+    },
+    shelter: {
+        type: Boolean,
+        default: false
+    }
+})
+
+var Victim = mongoose.model('Victim', VictimSchema);
+var Rescue = mongoose.model('Rescue', RescueSchema);
+var Helper = mongoose.model('Helper', HelperSchema);

@@ -1,0 +1,7 @@
+.distress-button{
+    position: fixed;
+    top: 5px;
+    left: 40%;
+    background-color: black;
+    z-index: 10;
+}

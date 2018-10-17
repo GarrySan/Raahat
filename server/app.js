@@ -40,4 +40,17 @@ var corsOptions = {
     credentials: true // <-- REQUIRED backend setting
   };
 server.use('*', cors(corsOptions))
+
+// parse requests of content-type - application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({ extended: true }))
+
+// parse requests of content-type - application/json
+server.use(bodyParser.json())
+
+// define a simple route
+server.get('/', (req, res) => {
+    res.json({"message": "Welcome to Disaster management application, Raahat."});
+});
+
+require('./routes/routes.js')(server);
 server.listen(PORT, ()=>console.log('listening at 4000'));
