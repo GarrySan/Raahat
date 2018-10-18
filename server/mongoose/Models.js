@@ -66,6 +66,6 @@ var HelperSchema = new Schema({
     }
 })
 
-var Victim = mongoose.model('Victim', VictimSchema);
-var Rescue = mongoose.model('Rescue', RescueSchema);
-var Helper = mongoose.model('Helper', HelperSchema);
+exports.Victim = mongoose.model('Victim', VictimSchema);
+exports.Rescue = mongoose.model('Rescue', RescueSchema);
+exports.Helper = mongoose.model('Helper', HelperSchema);

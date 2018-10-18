@@ -12,7 +12,25 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      mode: "none"
+      mode: "none",
+      pos: {}
+    }
+  }
+  componentDidMount(){
+    if(navigator.geolocation){
+      console.log('in here')
+      var pos = {};
+      navigator.geolocation.getCurrentPosition((position) => {
+        pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        this.setState({pos: pos})
+        
+      });
+    }
+    else{
+      alert('You need to have location services enabled for this application.')
     }
   }
   render() {
@@ -33,7 +51,7 @@ class App extends Component {
             </List>
           </div>
         </Dialog>
-        {this.state.mode=="Victim"?<Victim/>:this.state.mode=="Helper"?<Helper/>:null}
+        {this.state.mode=="Victim"?<Victim pos={this.state.pos}/>:this.state.mode=="Helper"?<Helper pos={this.state.pos}/>:null}
         {/* <Consumer>
           {mode => {
             console.log(mode)
