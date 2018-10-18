@@ -138,7 +138,7 @@ export default class Victim extends Component{
                             value={this.state.name}
                             onChange={(e) => this.handleChange('name', e)}
                             margin="normal"
-                            style={{marginLeft: 20}}
+                            style={{marginLeft: 20, marginTop: 100}}
                             />
                     </ListItem>
                     <ListItem>
