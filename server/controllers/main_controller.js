@@ -79,3 +79,61 @@ exports.getRescuers = (req, res) => {
 
         });
 }
+
+//Finding Rescuer by location
+exports.getOneRescuer = (req, res) => {
+    const loc = req.params.location
+    Rescue.findOne({location:loc})
+        .then(data => {
+            res.send(data)
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while getting the rescuer."
+            });
+
+        });
+} 
+
+//creates Rescuers
+exports.createRescuer = (req, res) => {
+    if(!req.body){
+        return res.status(400).send({
+            message: "Signal cannot be empty"
+        });
+    }
+    const rSignal = req.body;
+    Rescue.create(rSignal)
+        .then(data => {
+            res.send(data)
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating the Rescuer."
+            });
+
+        });
+    }
+
+//Updating the location of the rescuer
+exports.updateRescuer = (req, res) => {
+    console.log(req.body)
+    if(!req.body){
+        return res.status(400).send({
+            message: "Signal cannot be empty"
+        });
+    }
+    const id = req.params.id
+    Rescue.findOneAndUpdate({_id:id},    
+    {$set:
+        {location: req.body.location}    
+    })
+        .then(data => {
+            res.send(data)
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating the Rescuer."
+            });
+
+        });
+
+}
+

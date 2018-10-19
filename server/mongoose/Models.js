@@ -35,7 +35,8 @@ var VictimSchema = new Schema({
 
 var RescueSchema = new Schema({
     organization: {
-        type: String
+        type: String,
+        required: true
     },
     location: {
         type: String,
@@ -67,5 +68,5 @@ var HelperSchema = new Schema({
 })
 
 exports.Victim = mongoose.model('Victim', VictimSchema);
-exports.Rescue = mongoose.model('Rescue', RescueSchema);
+exports.Rescuer = mongoose.model('Rescue', RescueSchema);
 exports.Helper = mongoose.model('Helper', HelperSchema);

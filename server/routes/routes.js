@@ -13,6 +13,17 @@ module.exports = (app) => {
     //create a new helper
     app.post('/createHelper', main.createHelper);
 
-    // //get all the rescuers
-    // app.get('/getRescuers', main.getRescuers);
+    //get all the rescuers
+    app.get('/getRescuers', main.getRescuers);
+
+    //updating the location of the Rescuer
+    app.put('/updateRescuer/:id',main.updateRescuer);
+
+    //create a new Rescuer
+    app.post('/createRescuer', main.createRescuer);
+
+    //finding a Rescuer by location
+    app.get('/getRescuer/:location', main.getOneRescuer);
+
+
 }
